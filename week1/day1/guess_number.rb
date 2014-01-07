@@ -1,3 +1,4 @@
+#This is OaklandRocks to bad they are getting Michael Vick
 puts "I'm thinking of a number between 1 and 100"
 number = Random.new.rand(1..100)
 trys = 0
