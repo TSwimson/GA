@@ -4,7 +4,7 @@ trys = 0
 while true
     print "What number am I thinking? "
     trys += 1
-    user_guess = gets.chomp.to_i
+    user_guess = gets.to_i
     if user_guess == number
         break
     elsif number > user_guess
