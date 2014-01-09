@@ -38,6 +38,7 @@ smoothie_ingredients = {
  
 def blend(smoothie_ingredients)
   ingredients = smoothie_ingredients.keys.sample(3)
+  puts ingredients
   ingredients = ingredients.inject { |sum, x| sum + x }.delete " "
   ingredients.split("").shuffle.join
 end
@@ -51,12 +52,12 @@ puts blend(smoothie_ingredients)
 # Blend the the smoothie array
  
 class Blender
-
+  attr_reader :on
   def initialize(smoothie_ingredients)
     @ingredients = smoothie_ingredients.keys.sample(3).join.delete " "
     @on = false
   end
-  
+
   def blend
     if @on
       return @ingredients = @ingredients.split("").shuffle.join
@@ -65,26 +66,17 @@ class Blender
     end
   end
 
-  def on
+  def turn_on
     @on = true
     return "The blender is on"
   end
 
-  def off
+  def turn_off
     @on = false
     return "The blender is off"
   end
 end
 
-# b = Blender.new(smoothie_ingredients)
-
-# puts "Attempting to blend " + b.blend
-# puts "Turning on blender " + b.on
-# puts "blending " + b.blend
-# puts "blending " + b.blend
-# puts "blending " + b.blend
-# puts "Turning off blender " + b.off
-# puts "Attempting to blend " + b.blend
 
 
 
