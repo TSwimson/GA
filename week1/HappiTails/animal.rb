@@ -14,4 +14,7 @@ class Animal
         @toys = []
     end
 
+    def description
+        "#{@name} is a #{@age} year old #{@gener} #{@species}"
+    end
 end

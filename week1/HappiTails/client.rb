@@ -11,4 +11,8 @@ class Client
         @number_of_pets = number_of_pets
     end
 
+    def description
+        "#{@name} is a #{@age} year old with #{@number_of_pets} pets and #{@number_of_children} children"
+    end
+
 end
