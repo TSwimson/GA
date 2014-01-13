@@ -1,4 +1,4 @@
-require "./animal.rb"
+    require "./animal.rb"
 require "./client.rb"
 
 def clean_array a
