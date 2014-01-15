@@ -22,7 +22,11 @@ get "/multiply/:a/:b" do
 end
 
 get "/divide/:a/:b" do
-    (params[:a].to_i / params[:b].to_i).to_s if params[:b].to_i > 0
+    if params[:b].to_i == 0
+        "Cannot divide by zero"
+    else
+        (params[:a].to_i / params[:b].to_i).to_s
+    end
 end
 
 get "/add/*/*" do
