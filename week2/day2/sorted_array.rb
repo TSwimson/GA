@@ -46,14 +46,15 @@ class SortedArray
     @internal_arr
   end
 
-  def map &block
-    i = 0
-    tmp = @internal_arr.dup
+  def map #&block
     ret = []
-    while i < tmp.size
-      ret.push yield tmp[i]
-      i += 1
-    end
+    # i = 0
+    # tmp = @internal_arr.dup
+    # while i < tmp.size
+    #   ret.push yield tmp[i]
+    #   i += 1
+    # end
+    each { |x| ret.push yield x}
     return ret
   end
 
@@ -62,13 +63,12 @@ class SortedArray
   end
 
   def find value=nil
-    ret = value
-    each{|x| ret = x if yield x}
-    return ret
+    each{ |x| return x if yield x}
+    return value
   end
 
   def inject acc=0, &block
-    each{|x| acc = (yield acc, x) }
+    each{ |x| acc = (yield acc, x) }
     return acc
   end
 end

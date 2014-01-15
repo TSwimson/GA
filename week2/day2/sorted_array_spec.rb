@@ -34,7 +34,7 @@ describe SortedArray do
         it_should_behave_like "yield to all elements in sorted array", :map
 
         it 'creates a new array containing the values returned by the block' do
-          sorted_array.map{|x| x + 2}.should == [2,3,4,7,9].map {|x| x + 2}
+          sorted_array.map{|x| x + 2}.should == source.map {|x| x + 2}
         end
       end
     end
@@ -44,7 +44,7 @@ describe SortedArray do
         it 'the original array should be updated' do
           original_array = sorted_array.internal_arr
           sorted_array.map! { |x| x + 2}
-          sorted_array.internal_arr.should == [2,3,4,7,9].map {|x| x + 2}
+          sorted_array.internal_arr.should == source.map {|x| x + 2}
         end
 
         it_should_behave_like "yield to all elements in sorted array", :map!
@@ -59,22 +59,29 @@ describe SortedArray do
   end
 
   describe :find do
-    it_should_behave_like "yield to all elements in sorted array", :find
+    #it_should_behave_like "yield to all elements in sorted array", :find
 
     it "should behave like array.find" do
       sorted_array.find { |x| x == 4 }.should == [2,3,4,7,9].find {|x| x == 4}
     end
 
-    it "should return given default if not found" do
+    it "should return given default if target not found" do
       sorted_array.find("not found"){ |x| x == 30}.should == "not found"
     end
   end
 
   describe :inject do
-    it_should_behave_like "yield to all elements in sorted array", :inject
-
+    
     it "does inject" do
       sorted_array.inject { |sum, x| sum + x}.should == [2,3,4,7,9].inject{|sum,x| sum + x}
     end
+    # it "should yield successive args" do 
+    #   expect { |b| source.inject(&b) }.to yield_successive_args()
+    # end
+    # specify do
+    #   expect do |b|
+    #     sorted_array.send(:inject, &b)
+    #   end.to yield_successive_args([0,2],[2,3],[5,4],[9,7],[16,9])
+    # end
   end
 end
