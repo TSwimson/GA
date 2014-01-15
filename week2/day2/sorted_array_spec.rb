@@ -62,7 +62,7 @@ describe SortedArray do
     #it_should_behave_like "yield to all elements in sorted array", :find
 
     it "should behave like array.find" do
-      sorted_array.find { |x| x == 4 }.should == [2,3,4,7,9].find {|x| x == 4}
+      sorted_array.find { |x| x % 3 }.should == [2,3,4,7,9].find {|x| x % 3}
     end
 
     it "should return given default if target not found" do
@@ -75,13 +75,5 @@ describe SortedArray do
     it "does inject" do
       sorted_array.inject { |sum, x| sum + x}.should == [2,3,4,7,9].inject{|sum,x| sum + x}
     end
-    # it "should yield successive args" do 
-    #   expect { |b| source.inject(&b) }.to yield_successive_args()
-    # end
-    # specify do
-    #   expect do |b|
-    #     sorted_array.send(:inject, &b)
-    #   end.to yield_successive_args([0,2],[2,3],[5,4],[9,7],[16,9])
-    # end
   end
 end

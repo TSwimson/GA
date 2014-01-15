@@ -46,14 +46,8 @@ class SortedArray
     @internal_arr
   end
 
-  def map #&block
+  def map
     ret = []
-    # i = 0
-    # tmp = @internal_arr.dup
-    # while i < tmp.size
-    #   ret.push yield tmp[i]
-    #   i += 1
-    # end
     each { |x| ret.push yield x}
     return ret
   end
