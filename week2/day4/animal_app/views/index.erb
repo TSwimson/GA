@@ -1,0 +1,29 @@
+<!-- action is the route where the request will be sent
+method is and http verb, will be get or post  -->
+<div class ="container">
+    <form action="/animals" method="POST">
+        <label for="animal[species]">Animal Species: </label>
+        <input type="text" name="animal[species]">
+        <label for="animal[description]">Animal Description: </label>
+        <textarea name="animal[description]"></textarea>
+        <button>Submit</button>
+    </form>
+
+
+<% @animals.each_with_index do |x, i| %>
+    <div>
+       Species: <%= "<a href=\"/animal/#{i}\">#{x[:species]}" %> </br>
+       Description:  <%= "#{x[:description]}</a>" %> 
+    </div>
+<% end %>
+
+</div>
+<!-- <div class="container">
+    In the view <br>
+    <%# if @show_greeting %>
+    <h1><%# @greeting %>, world</h1>
+    <%# else %>
+        Hello World
+    <%# end %>
+
+</div> -->
