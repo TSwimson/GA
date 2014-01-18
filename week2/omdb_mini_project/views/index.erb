@@ -1,6 +1,29 @@
-<!-- <a href="#" id="example" class="btn btn-success" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Twitter Bootstrap Popover">hover for popover</a>
+
+<% if @movies %>
+<div class="container">
+    <div class = "row">
+<% @movies.values.each_with_index do |m,i| %>
+<% if i % 4 == 0 %>
+    </div></div>
+    <div class="container">
+        <div class = "row">
+<% end %>
+    <div class="col-xs-12 col-sm-3">
+    <a href="#" id="example"  rel="popover" data-content="<%=m.ad["Plot"]%>" data-original-title=<%=m.title%>>
+        <img class="imgdiv" src="<%=m.ad["Poster"]%>"/>
+        <h4><%=m.title%></h4>
+    </a>
+    </div>
+<% end 
+end%>
+
+
+
+
 <script>
       $(function (){
          $("#example").popover();
       });
-</script> -->
+</script>
+
+<!-- class="btn btn-success" -->

@@ -17,7 +17,8 @@ class Movie
     def get_additional_content
         response = Typhoeus.get("http://www.omdbapi.com/", :params => {:i => @id})
         result = JSON.parse(response.body)
-        @ad = result.select{|k,v| %w(Plot Rated Runtime Genre Director Actors Poster Metascore).include? k}
+        @ad = result.select{|k,v| %w(Plot Rated Runtime Genre Director Actors Poster Metascore Type).include? k}
+        @ad["Poster"] = "/img/nopicture.gif" if @ad["Poster"].size < 5
     end
 end
 
@@ -26,13 +27,13 @@ def get_movies search
     result = JSON.parse(response.body)["Search"]
     movies = {}
     result.each { |m| movies[m["imdbID"]] = Movie.new(m["Title"], m["Year"], m["imdbID"]) }
-    movies.each { |k,v| v.get_additional_content }
+    movies.each_value { |v| v.get_additional_content }
+    movies.reject! { |k,v| v.ad["Type"].downcase != "movie" }
 end
 
 get '/*' do
     if params[:splat][0].size > 0
-        @movies = get_movies params[:splat][0].size
-        binding.pry
+        @movies = get_movies params[:splat][0]
     end
     erb :index
 end
