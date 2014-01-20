@@ -8,6 +8,11 @@ body {
     height: 100%;
 }
 
-.row {
-    padding: 0 10 0 10;
+.left {
+    float: left;
 }
+
+/*.row {
+    padding: 0 10 0 10;
+    height: 120px;
+}*/

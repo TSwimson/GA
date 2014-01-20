@@ -1,29 +1,33 @@
 
 <% if @movies %>
-<div class="container">
-    <div class = "row">
+<div class="container-fluid">
+    <div class = "row-fluid">
 <% @movies.values.each_with_index do |m,i| %>
-<% if i % 4 == 0 %>
+<% if i % 2 == 0 %>
     </div></div>
     <div class="container">
         <div class = "row">
 <% end %>
-    <div class="col-xs-12 col-sm-3">
-    <a href="#" id="example"  rel="popover" data-content="<%=m.ad["Plot"]%>" data-original-title=<%=m.title%>>
+    <div class="col-xs-6">
+      <div class="">
+    <a href="#" id="<%=m.id%>"  rel="popover" data-content="<%=m.ad["Plot"]%>" data-original-title="<%=m.title%>">
         <img class="imgdiv" src="<%=m.ad["Poster"]%>"/>
         <h4><%=m.title%></h4>
     </a>
+  </div>
     </div>
-<% end 
-end%>
+<% end %>
+</div></div>
+<%end%>
 
 
 
-
-<script>
+<% @movies.values.each do |m|%>
+<%=
+"<script>
       $(function (){
-         $("#example").popover();
+         $(\"#{m.id}\").popover();
       });
-</script>
-
-<!-- class="btn btn-success" -->
+</script>"
+%>
+<%end%>

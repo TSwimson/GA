@@ -23,21 +23,31 @@ class Movie
 end
 
 def get_movies search
-    response = Typhoeus.get("http://www.omdbapi.com/", :params => {:s => params[:splat][0]})
+    response = Typhoeus.get("http://www.omdbapi.com/", :params => {:s => search})
     result = JSON.parse(response.body)["Search"]
     movies = {}
     result.each { |m| movies[m["imdbID"]] = Movie.new(m["Title"], m["Year"], m["imdbID"]) }
     movies.each_value { |v| v.get_additional_content }
     movies.reject! { |k,v| v.ad["Type"].downcase != "movie" }
+    # puts "*"*40
+    # puts "movies = " + movies.to_s
+    # puts "search = " + search
+    # puts "result = " + result.to_s
+    movies
 end
 
-get '/*' do
+get '/s/*' do
     if params[:splat][0].size > 0
-        @movies = get_movies params[:splat][0]
+        search_terms = params[:splat][0].split"/"
+        @movies = get_movies search_terms.join" "
+        puts "Movies = " + @movies.to_s
     end
     erb :index
 end
-
+get '/' do
+    erb :index
+end
 post "/" do
-    redirect "/#{params[:s]}"
+    search_terms = params[:s].split
+    redirect "/s/#{search_terms.join"/"}"
 end
