@@ -44,9 +44,18 @@ get '/s/*' do
     end
     erb :index
 end
+
 get '/' do
     erb :index
 end
+
+get "/show/:id" do
+    @id = params[:id]
+    response = Typhoeus.get("http://www.omdbapi.com/", :params => {:i => @id})
+    @result = JSON.parse(response.body)
+    erb :show
+end
+
 post "/" do
     search_terms = params[:s].split
     redirect "/s/#{search_terms.join"/"}"

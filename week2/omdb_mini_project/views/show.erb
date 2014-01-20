@@ -1,0 +1,37 @@
+<div class="container">
+
+    <div class="row"
+        <div class="xs-poster visible-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+            <img class="poster hidden-sm hidden-md hidden-lg" src="<%=@result["Poster"]%>"/>
+        </div>
+    </div>
+    <div class="row desc">
+        <div class="visible-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+            <h4>Directed by <%=@result["Director"]%></h4>
+            <p><%=@result["Plot"]%></p>
+            <p>Rating: <%=@result["Rated"]%></p>
+            <p>Runtime: <%=@result["Runtime"]%></p>
+            <p>Genre: <%=@result["Genre"]%></p>
+            <p>Actors: <%=@result["Actors"]%></p>
+            <a href="http://www.imdb.com/title/<%=@result["imdbID"]%>">IMDB Link</a>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="visible-sm visible-md visible-lg col-sm-4 col-sm-offset-2">
+            <img class="poster" src="<%=@result["Poster"]%>"/>
+        </div>
+        <div class="visible-sm visible-md visible-lg col-sm-4 col-sm-offset-1">
+            <h2><%=@result["Title"] + " - " + @result["Year"]%></h2>
+            <h4>Directed by <%=@result["Director"]%></h4>
+            <p><%=@result["Plot"]%></p>
+            <p>Rating: <%=@result["Rated"]%></p>
+            <p>Runtime: <%=@result["Runtime"]%></p>
+            <p>Genre: <%=@result["Genre"]%></p>
+            <p>Actors: <%=@result["Actors"]%></p>
+            <a href="http://www.imdb.com/title/<%=@result["imdbID"]%>">IMDB Link</a>
+        </div>
+    </div>
+</div>
+
+
+<%=@result[""]%>
