@@ -3,6 +3,8 @@ require 'sinatra/reloader'
 require 'typhoeus'
 require 'json'
 require "pry"
+require "pg"
+
 class Movie
 
     attr_reader :title, :year, :id, :ad
@@ -29,11 +31,24 @@ def get_movies search
     result.each { |m| movies[m["imdbID"]] = Movie.new(m["Title"], m["Year"], m["imdbID"]) }
     movies.each_value { |v| v.get_additional_content }
     movies.reject! { |k,v| v.ad["Type"].downcase != "movie" }
-    # puts "*"*40
-    # puts "movies = " + movies.to_s
-    # puts "search = " + search
-    # puts "result = " + result.to_s
     movies
+end
+
+def add_view id
+    c = PGconn.new(:host => "localhost", :dbname => "testdb")
+    statement = %q(UPDATE movie SET views = views + 1 WHERE id = $1;)
+    statement1 = %q(INSERT INTO movie (id, views) SELECT $1, 1 WHERE NOT EXISTS (SELECT 1 FROM movie WHERE id = $2);)
+
+    puts a = c.exec_params(statement, [id])
+    puts b = c.exec_params(statement1, [id, id])
+    c.close
+end
+
+get '/history' do
+  c = PGconn.new(:host => "localhost", :dbname => "testdb")
+  @movies = c.exec_params("SELECT * FROM movie;")
+  c.close
+  erb :movies
 end
 
 get '/s/*' do
@@ -51,6 +66,7 @@ end
 
 get "/show/:id" do
     @id = params[:id]
+    add_view @id
     response = Typhoeus.get("http://www.omdbapi.com/", :params => {:i => @id})
     @result = JSON.parse(response.body)
     erb :show
