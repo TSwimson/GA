@@ -1,33 +1,59 @@
 
 <% if @movies %>
-<div class="container-fluid">
-    <div class = "row-fluid">
+<div class="container">
+    <div class = "row">
 <% @movies.values.each_with_index do |m,i| %>
 <% if i % 2 == 0 %>
-    </div></div>
-    <div class="container">
+    </div>
         <div class = "row">
 <% end %>
-    <div class="col-xs-6">
+    <div class=" visible-xs col-xs-6">
       <div class="">
     <a href="#" id="<%=m.id%>"  rel="popover" data-content="<%=m.ad["Plot"]%>" data-original-title="<%=m.title%>">
         <img class="imgdiv" src="<%=m.ad["Poster"]%>"/>
         <h4><%=m.title%></h4>
     </a>
-  </div>
+  </div></div>
+<% end %>
+<% @movies.values.each_with_index do |m,i| %>
+<% if i % 3 == 0 %>
     </div>
+        <div class = "row">
+<% end %>
+    <div class=" visible-sm col-sm-4">
+      <div class="">
+    <a href="#" id="<%=m.id%>"  rel="popover" data-content="<%=m.ad["Plot"]%>" data-original-title="<%=m.title%>">
+        <img class="imgdiv" src="<%=m.ad["Poster"]%>"/>
+        <h4><%=m.title%></h4>
+    </a>
+  </div></div>
+<% end %>
+<% @movies.values.each_with_index do |m,i| %>
+<% if i % 4 == 0 %>
+    </div>
+        <div class = "row">
+<% end %>
+    <div class=" visible-md col-md-3">
+      <div class="">
+    <a href="#" id="<%=m.id%>"  rel="popover" data-content="<%=m.ad["Plot"]%>" data-original-title="<%=m.title%>">
+        <img class="imgdiv" src="<%=m.ad["Poster"]%>"/>
+        <h4><%=m.title%></h4>
+    </a>
+  </div></div>
+<% end %>
+<% @movies.values.each_with_index do |m,i| %>
+<% if i % 6 == 0 %>
+    </div>
+        <div class = "row">
+<% end %>
+    <div class=" visible-lg col-lg-2">
+      <div class="">
+    <a href="#" id="<%=m.id%>"  rel="popover" data-content="<%=m.ad["Plot"]%>" data-original-title="<%=m.title%>">
+        <img class="imgdiv" src="<%=m.ad["Poster"]%>"/>
+        <h4><%=m.title%></h4>
+    </a>
+  </div></div>
 <% end %>
 </div></div>
 <%end%>
 
-
-
-<% @movies.values.each do |m|%>
-<%=
-"<script>
-      $(function (){
-         $(\"#{m.id}\").popover();
-      });
-</script>"
-%>
-<%end%>
