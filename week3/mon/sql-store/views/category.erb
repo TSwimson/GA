@@ -1,0 +1,12 @@
+<p> Name: <%= @category[0]["category_name"] %> </p>
+<p> Id: <%= @category[0]["category_id"] %> </p>
+<p>Products:
+<ul>
+<%@category.each do |c|%>
+<li><a href="/products/<%=c["p_id"]%>"><%=c["product_name"]%></a></li>
+<%end%>
+</ul>
+</p>
+<form action="/categories/<%= @category[0]["id"] %>/destroy" method="post">
+    <input type="submit" name="" value="Delete this category.">
+</form>

@@ -1,0 +1,14 @@
+<p> Name: <%= @product[0]["p_name"] %> </p>
+<p> Price: <%= @product[0]["p_price"] %></p>
+<p> Id: <%= @product[0]["p_id"] %></p>
+<p> <%= @product[0]["p_des"] %></p>
+<p> Categories:
+    <ul>
+        <%@product.each do |p|%>
+            <li><a href="/categories/<%=p["c_id"]%>"><%=p["c_name"]%></a><form action="/removecat/<%=p["ref_id"]%>" method="POST"><input type="submit" value="Remove this category"></form></li>
+        <%end%>
+<a href="<%=@product[0]["p_id"]%>/edit"> Edit this product.</a>
+<form action="/products/<%= @product[0]["p_id"] %>/destroy" method="post">
+    <input type="submit" name="" value="Delete this product.">
+</form>
+

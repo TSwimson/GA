@@ -1,0 +1,29 @@
+<form action="/products/<%=@product["id"]%>" method="post">
+  <p>
+    <label>Name:</label>
+    <input type="text" name="name" value="<%=@product["name"]%>">
+  </p>
+
+  <p>
+    <label>Price:</label>
+    <input type="number" name="price" value="<%=@product["id"]%>">
+  </p>
+
+  <p>
+    <label>Description:</label>
+    <textarea name="description"><%= @product["description"]%></textarea>
+  </p>
+
+  <p>
+    <input type="submit" name="" value="Create the new product.">
+  </p>
+</form>
+<form action="/addrel/<%=@product["id"]%>" method="POST">
+  <select name="category">
+    <% @categories.each do |c| %>
+    <option name="category" value="<%=c["id"]%>"><%=c["name"]%></option> 
+    <%end%>
+  </select>
+  <input type="submit" value="Add this category"/>
+</form>
+
