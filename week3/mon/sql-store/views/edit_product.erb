@@ -20,9 +20,12 @@
 </form>
 <form action="/addrel/<%=@product["id"]%>" method="POST">
   <select name="category">
-    <% @categories.each do |c| %>
+    <%
+     @categories.each do |c| 
+      if c["name"].length > 1%>
     <option name="category" value="<%=c["id"]%>"><%=c["name"]%></option> 
-    <%end%>
+    <%end
+    end%>
   </select>
   <input type="submit" value="Add this category"/>
 </form>

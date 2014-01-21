@@ -1,0 +1,10 @@
+<form action="/planes" method="post">
+    Name:
+    <input type="text" name="plane[name]">
+    Engine Type:
+    <input type="text" name="plane[engine_type]">
+    Description:
+    <textarea name="plane[description]"></textarea>
+    <%= token_tag form_authenticity_token %>
+    <button> Save Plane </button>
+</form>

@@ -21,7 +21,6 @@ post '/addrel/:pid' do
   c = PGconn.new(host: "localhost", dbname: dbname)
   c.exec_params("INSERT INTO category_and_product (category_id, product_id) VALUES($1, $2);", [params[:category], params[:pid]])
   c.close
-  binding.pry
   redirect "/products/#{params[:pid]}"
 end
 
