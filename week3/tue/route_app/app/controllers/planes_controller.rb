@@ -34,7 +34,7 @@ class PlanesController < ApplicationController
         plane = Plane.find(plane_id)
 
         # get updated data
-        updated_attributes = params.require(:plane).permit(:name, :type, :description)
+        updated_attributes = params.require(:plane).permit(:name, :engine_type, :description)
         # update the plane
         plane.update_attributes(updated_attributes)
 

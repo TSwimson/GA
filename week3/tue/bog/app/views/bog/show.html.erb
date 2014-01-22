@@ -1,0 +1,9 @@
+<div>
+        Name: <%= @bog[:name] %> <br>
+        Description: <%= @bog[:description] %><br>
+        <form action="/bogs/<%= @bog.id %>" method="post">
+            <input name="_method" type="hidden" value="delete" />
+            <button>Destroy this bog!</button>
+            <%= token_tag form_authenticity_token %>
+        </form>
+</div>

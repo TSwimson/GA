@@ -1,0 +1,8 @@
+Hello<br><br>
+<% @bogs.each do |bog| %>
+    <div>
+        <a href="/bogs/<%=bog.id%>">Name: <%= bog[:name] %></a> <br>
+        Description: <%= bog[:description] %>
+    </div><br/>
+<% end %>
+<a href="/bogs/new">Create a new bog</a>

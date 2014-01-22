@@ -1,0 +1,8 @@
+<form action="/bogs/<%= @bog.id %>" method="post">
+    <input name="_method" type="hidden" value="put" />
+    <input type="text" name="bog[name]" value="<%= @bog.name %>">
+    <textarea name="bog[description]"><%=@bog.description%></textarea>
+    <%= token_tag form_authenticity_token %>
+
+    <button> Update bog </button>
+</form>
