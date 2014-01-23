@@ -1,0 +1,5 @@
+<%= form_for :moviec, url: new_moviec_path do |f| %>
+  <%= label_tag(:title, "Title:") %> <%= f.text_field :title %></br>
+  <%= label_tag(:description, "Description:") %> <%= f.text_field :description %></br>
+  <%= f.submit "Create" %>
+<% end %>

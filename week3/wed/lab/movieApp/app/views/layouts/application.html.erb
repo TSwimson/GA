@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovieApp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <a class="navbar-brand" href="/">Movies</a>
+    <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/moviec/new">New Movie</a></li>
+        <% if @movie && !request.original_url.include?("edit")%>
+        <li><a href="/moviec/<%=@movie["id"]%>/edit/">Edit</a></li>
+        <% end %>
+    </ul>
+    <form class="navbar-search pull-right" action="/search" method="POST">
+        <input type="text" class="search-query span2" name="search" placeholder="Search">
+        <%= token_tag form_authenticity_token %>
+    </form>
+
+
+
+</nav>
+<%= yield %>
+
+</body>
+</html>

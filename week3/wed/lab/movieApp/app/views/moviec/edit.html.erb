@@ -1,0 +1,10 @@
+<h1>Edit Movie</h1>
+
+<form action="/moviec/<%= @movie["id"]%>" method="post" >
+  <input name="_method" type="hidden" value="patch" />
+  Title: <input name='movie[title]' type="text" value="<%= @movie['title'] %>" /><br>
+  Description: <input name='movie[description]' type="text" value="<%= @movie['description'] %>" />
+  imdbId: <input name='movie[imdbId]' type="text" value="<%= @movie['imdbId'] %>" />
+  <%= token_tag form_authenticity_token %>
+  <input name="commit" type="submit" value="Save changes" />
+</form>

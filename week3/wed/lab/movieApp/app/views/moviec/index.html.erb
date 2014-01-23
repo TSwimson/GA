@@ -1,0 +1,12 @@
+<h1>Moviec#index</h1>
+
+<% @movies.each do |movie| %>
+
+  <%= link_to movie["title"], moviec_path(movie['id']) %> </br>
+
+    <%= button_to "delete", {controller: :moviec, action: :destroy, id: movie["id"] }, :method => :delete %>
+  <%= button_to "edit", {controller: :moviec, action: :edit, id: movie["id"] }, :method => :get %> -->
+
+<% end %>
+
+ <!-- # link_to 'Add Movie to DB', new_movie_path %> -->
