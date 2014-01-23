@@ -7,7 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+    <a class="navbar-brand" href="/">Movies</a>
+    <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/moviec/new">New Movie</a></li>
+        <% if @movie && !request.original_url.include?"edit"%>
+        <li><a href="/movies/edit/<%=@movie["id"]%>">Edit</a></li>
+        <% end %>
+    </ul>
 
+
+</nav>
 <%= yield %>
 
 </body>

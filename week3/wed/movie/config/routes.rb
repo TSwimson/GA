@@ -1,6 +1,7 @@
 Movie::Application.routes.draw do
+
   resources :movies
-  
+
   root 'movies#index'
 
   # get 'movies'  => 'movies#index', as: :movies
@@ -14,4 +15,5 @@ Movie::Application.routes.draw do
   # get 'movies/:id/edit' => 'movies#edit', as: :edit_movie
 
   # patch 'movies/:id' => 'movies#update'
+  post "movies/new" => 'movies#create'
 end
