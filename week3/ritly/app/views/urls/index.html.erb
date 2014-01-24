@@ -1,0 +1,6 @@
+<h1>Enter a url to shorten</h1>
+<form action="/" method="POST">
+    <input type=text name="url[long]" placeholder="http://"/>
+    <button>Submit</button>
+    <%= token_tag form_authenticity_token %>
+</form>
