@@ -4,3 +4,8 @@
     <button>Submit</button>
     <%= token_tag form_authenticity_token %>
 </form>
+Your shortened URLs <br>
+<% @urls.each do |url| %>
+<a href="<%=show_url_path(url.short)%>"><%=url.short%></a><br/>
+<%end%>
+
