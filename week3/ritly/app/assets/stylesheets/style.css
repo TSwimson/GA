@@ -23,7 +23,7 @@ h1 {
 input{
   padding:8px;
   margin-bottom: 20px;
-  width:500px;
+  width:60%;
   font-size:16px;
   top:1px;
   position:relative;
@@ -64,7 +64,7 @@ input:focus{
   border-radius:4px;
   background:#fff;
   display:block;
-  width:600px;
+  width:50%;
   height:50px;
   margin:10px auto 0px auto;
   border:1px solid #ccc;

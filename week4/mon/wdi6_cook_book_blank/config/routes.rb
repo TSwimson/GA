@@ -3,9 +3,9 @@ CookBook::Application.routes.draw do
 
   root to: 'books#index'
 
-  get '/signup' => 'users#new'
+  get '/signup', to: 'users#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-  get'/signin' => 'sessions#new'
+  get'/signin', to: 'sessions#new'
 
 end
 
