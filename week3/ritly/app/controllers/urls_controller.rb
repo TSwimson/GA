@@ -1,6 +1,7 @@
 class UrlsController < ApplicationController
 
     def index
+        @urls = []
         if cookies['user_id']
             @urls = Url.find_all_by_user_id(cookies['user_id'])
         else
