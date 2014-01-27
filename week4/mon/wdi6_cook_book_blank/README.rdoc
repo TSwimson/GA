@@ -1,0 +1,11 @@
+== WDI Cook Book app 
+... with authentication/authorization and session management
+
+==Install instructions
+
+- fork this repo and clone to your box.
+- cd in project root dir
+- bundle install 
+- rake db:migrate
+- rake db:seed
+- start rails server
