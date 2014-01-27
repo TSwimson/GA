@@ -1,5 +1,7 @@
-id:    <%=url.id%><br/>
-long:  <a href="<%=url.long%>"><%=url.long%></a><br/>
-short: <%=url.short%><br/>
-views: <%=url.views%><br/>
-user_id:<%=url.user_id%><br/>
+
+
+<div class="new-link">
+  short: <a href="http://localhost:3000/<%=url.short%>">localhost:/<%=url.short%></a><br/>
+  long:  <div class="long-link"><%=url.long.lstrip%></div> <br/>
+  views:<span class="num"> <%=url.views%></span>
+</div>

@@ -1,11 +1,17 @@
-<h1>Enter a url to shorten</h1>
+<div class="form-div">
+<h1 classs="ritly">Ritly</h1>
 <form action="/" method="POST">
     <input type=text name="url[long]" placeholder="http://"/>
-    <button>Submit</button>
+    <button class="myButton">Submit</button>
     <%= token_tag form_authenticity_token %>
 </form>
+<div>
 Your shortened URLs <br>
 <% @urls.each do |url| %>
-<a href="<%=show_url_path(url.short)%>"><%=url.short%></a><br/>
+<div class="old-link">
+  <a href="<%=url.short%>">localhost:3000/<%=url.short%></a>
+  <div class="long-link"><%=url.long%></div>
+</div> 
+
 <%end%>
 
