@@ -6,8 +6,15 @@
           <li><h4>Le Cook Book App</h4></li>
         </ul>
         <ul class="nav pull-right">
-          <li><%= link_to "Sign up", signup_path %></li>
-          <li><%= link_to "Sign in", signin_path %></li>
+            <% if signed_in? %>
+              <li><%= link_to "My profile", get_current_user %></li>
+              <li>
+                <%= link_to "Sign out", signout_path, method: "delete" %>
+              </li>
+            <% else %>
+              <li><%= link_to "Sign up", signup_path %></li>
+              <li><%= link_to "Sign in", signin_path %></li>
+            <% end %>
         </ul>
       </nav>
     </div>

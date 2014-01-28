@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	    @user=User.new(params[:user])
 	    if @user.save
 	        flash[:success] = "Welcome to the Cook Book app!"
-	        # sign_in @user
+	        sign_in @user
 	        redirect_to @user
 	    else
 	        render'new'
