@@ -2,6 +2,9 @@ body {
 	background-color: #f2f2f2;
 	font-family: 'Lato', sans-serif;
 }
+.nav-style-list {
+  padding-right: 8px;
+}
 .signup-form {
   margin: 0 auto;
   width:320px;
@@ -112,6 +115,6 @@ h1 {
 .num{
   font-weight:600;
 }
-label{
+.sign-label{
   width:100px;
 }
