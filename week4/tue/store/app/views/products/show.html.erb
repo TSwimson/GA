@@ -1,0 +1,6 @@
+<h1><%=@product.name%></h1>
+Description: <%=@product.description%><br/>
+Price: <%=@product.price%><br/>
+Categories:<br/> <ul><%@product.categories.each do |c|%>
+<li><%=c.name%></li>
+<%end%>

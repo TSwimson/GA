@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   def new
   	redirect_to root_url
   end
@@ -20,4 +21,5 @@ class SessionsController < ApplicationController
       sign_out
       redirect_to root_url
   end
+
 end

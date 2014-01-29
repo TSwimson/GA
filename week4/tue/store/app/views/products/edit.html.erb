@@ -1,0 +1,14 @@
+<h1>Edit Product</h1>
+<%= form_for(@product) do |f| %>
+<%=f.label :name%>
+<%=f.text_field :name %>
+<%=f.label :description%>
+<%=f.text_field :description%>
+<%=f.label :price%>
+<%=f.text_field :price%>
+<%=f.label "Add Category"%>
+<%=select_tag(:add_category, options_for_select(@categories.map{|c| [c.name, c.id]}.unshift([nil,nil])))%>
+<%=f.label "Remove Category"%>
+<%=select_tag(:remove_category, options_for_select(@product_categories.map{|c| [c.name, c.id]}.unshift([nil,nil])))%>
+<%=f.submit%>
+<%end%>
