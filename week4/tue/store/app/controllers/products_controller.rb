@@ -18,8 +18,7 @@ class ProductsController < ApplicationController
   def update
   	product = Product.find(params[:id])
   	product.update(params.require(:product).permit(:name, :price, :description))
-    puts (("#"*60)+"\n")*4
-    puts params
+    
     product.categories.delete(params[:remove_category]) if params[:remove_category].size > 0
     product.categories << Category.find(params[:add_category]) if params[:add_category].size > 0
 
