@@ -20,7 +20,11 @@ var Iterators = (function() {
       // to each element on the array
       // returning a new array containing
       // the results of the applications
-      
+      var new_arr = [];
+      Iterators.each(arr, function(i){
+        new_arr.push(action(i));
+      });
+      return new_arr;
     },
     reduce: function(arr, base, action) {
       // as a BONUS, implement reduce
@@ -30,6 +34,7 @@ var Iterators = (function() {
       // base value, and a combination action
       // function -- for example add and perform
       // the action on each successive element
+      
     }
   };
 })();
