@@ -21,7 +21,8 @@ var Iterators = (function() {
       // returning a new array containing
       // the results of the applications
       var new_arr = [];
-      Iterators.each(arr, function(i){
+      Iterators.each(arr,
+       function(i){
         new_arr.push(action(i));
       });
       return new_arr;
@@ -34,7 +35,11 @@ var Iterators = (function() {
       // base value, and a combination action
       // function -- for example add and perform
       // the action on each successive element
-      
+      Iterators.each(arr,
+       function(i){
+          base = action(base, i)
+       });
+      return base
     }
   };
 })();
@@ -82,7 +87,7 @@ console.log(
 console.log("arr's contents:");
 console.log(arr);
 
-// BONUS: should output the sum
+// BONUS: should output the sum <6>
 console.log("result of applying Iterators.reduce to arr with a sum function:");
 console.log(
   Iterators.reduce(arr, 0, function (a, b) {
