@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Haters</title>
+	<style>
+	img.flip {
+	    transform: scale(-1, 1);
+	    -moz-transform: scale(-1, 1);
+	    -webkit-transform: scale(-1, 1);
+	    -o-transform: scale(-1, 1);
+	    -khtml-transform: scale(-1, 1);
+	    -ms-transform: scale(-1, 1);
+	}
+	</style>
+	<script>
+
+	var facing = "right";
+	function getWidth(){//found this on stackoverflow http://stackoverflow.com/questions/1038727/how-to-get-browser-width-using-javascript-code
+		if (self.innerWidth) {
+		   return self.innerWidth;
+		}
+		else if (document.documentElement && document.documentElement.clientHeight){
+		    return document.documentElement.clientWidth;
+		}
+		else if (document.body) {
+		    return document.body.clientWidth;
+		}
+		return 0;
+	}
+
+	var update = function(){
+		var hater = document.querySelector(".hater")
+		var left = hater.offsetLeft;
+		var right = hater.width + left;
+		if (facing == "right")
+		{
+			if (right < getWidth()) {
+				hater.style.left = (left + 5) + "px";
+			}
+			else {
+				facing = "left";
+				hater.classList.toggle('flip');
+			}
+		}
+		else
+		{
+			if (left > 0 ){
+				hater.style.left = (left - 5) + "px";
+			}
+			else {
+				facing = "right";
+				hater.classList.toggle('flip');
+			}
+		}
+	};
+
+	window.addEventListener('load',
+                        function(){
+                          setInterval(
+                            function(){update();}, 25);});
+	</script>
+</head>
+<body>
+	<img class="hater" id="h" src="haters.gif" style="position:absolute"/>
+</body>
+</html>
