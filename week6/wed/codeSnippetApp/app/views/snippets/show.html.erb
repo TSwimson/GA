@@ -1,0 +1,9 @@
+<h1>Snippets#show</h1>
+
+<p>Find me in app/views/snippets/show.html.erb
+</p>
+<% if @snippet.highlighted_code%>
+<%= @snippet.highlighted_code  %>
+<% else %>
+<%= @snippet.plane_code%>
+<% end %>

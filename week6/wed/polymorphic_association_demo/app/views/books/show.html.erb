@@ -1,0 +1,7 @@
+<h1><%=  @book.title %></h1>
+
+<% @book_comments.each do |comment| %>
+
+  <h2><li><%= comment.content %></li></h2>
+
+<% end %>

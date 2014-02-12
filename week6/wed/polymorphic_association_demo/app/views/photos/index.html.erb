@@ -1,0 +1,7 @@
+<h1>photos</h1>
+
+<% @photos.each do |photo| %>
+
+  <h2><a href="/photos/<%= photo.id%>"><li><%= photo.caption %></li></a></h2>
+
+<% end %>
