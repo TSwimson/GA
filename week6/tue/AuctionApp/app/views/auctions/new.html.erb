@@ -1,0 +1,10 @@
+<h1><%= @auction.body || "New Auction" %></h1>
+<%= form_for @auction do |f| %>
+    <%= f.label "Name" %>
+    <%= f.text_field :body %>
+    <%= f.fields_for :bid do |b| %>
+        <%= b.label "Starting amount" %>
+        <%= b.text_field :amount %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
