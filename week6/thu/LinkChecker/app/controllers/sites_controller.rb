@@ -39,7 +39,7 @@ class SitesController < ApplicationController
       f.html do
         @site = Site.find(params[:id])
       end
-      f.json { render json: {},status: 404 }
+      f.json { render json: {}, status: 404 }
     end
   end
 
