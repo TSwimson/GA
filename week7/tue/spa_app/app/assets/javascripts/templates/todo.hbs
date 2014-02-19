@@ -1,0 +1,13 @@
+{{!-- <div class='todo'>
+  <h4 class='title'>{{id}}. {{title}}</h4>
+  {{#if completed}}
+    <p class='complete'> Complete </p> 
+  {{else}}
+    <p class='incomplete'> Incomplete </p>
+  {{/if}}
+</div> --}}
+<div class='todo done- done-{{completed}}' data-id='{{id}}'>
+  {{ title }}
+  <input type="checkbox" {{#if completed}} checked {{/if}} name='completed'>
+  <button id='removeTodo'>Delete</button>
+</div>
