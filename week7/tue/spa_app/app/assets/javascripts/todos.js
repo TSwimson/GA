@@ -3,13 +3,17 @@ $(function() {
   var App = {};
   window.App = App;
 
-  App.models =
-  [
-    {id: 1, title: "Walk the dog", completed: false},
-    {id: 2, title: "Take out the trash", completed: false},
-    {id: 3, title: "Clean car", completed: false},
-    {id: 4, title: "Eat", completed: true}
-  ];
+  App.models = [];
+  // [
+  //   {id: 1, title: "Walk the dog", completed: false},
+  //   {id: 2, title: "Take out the trash", completed: false},
+  //   {id: 3, title: "Clean car", completed: false},
+  //   {id: 4, title: "Eat", completed: true}
+  // ];
+  App.urls = {
+    index : { path: '/todos.json', method: 'get' },
+    create : { path: '/todos/create.json', method: 'post'}
+  };
   App.count = 4;
 
   App.findModel = function(id){
@@ -66,9 +70,16 @@ $(function() {
   App.updateItem = function(model, callback) {
     callback(model);
   };
-  
-  App.setTargetTemplate("#todos", "todo")
-    .renderAllModels().doThis(function(){
+
+  App.getItems = function(callback) {
+    $.ajax({
+      url: this.urls.index.path,
+      type: this.urls.index.method
+    }).done(callback);
+    return this;
+  };
+
+  App.doThis(function(){
       var _this = this;
       // Add new models from a form
       $("#add_todo").on("submit",function(event){
@@ -98,5 +109,14 @@ $(function() {
           });
         }
       });
+  });
+
+  App.doThis(function() {
+    var _this = this;
+    _this.getItems(function(responseData) {
+      _this.models = _this.models.concat(responseData);
+      _this.setTargetTemplate("#todos", "todo").renderAllModels();
+    });
+    return _this;
   });
 });
