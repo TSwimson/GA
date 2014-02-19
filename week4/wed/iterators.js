@@ -11,7 +11,7 @@ var Iterators = (function() {
       for (var i = 0; i < arr.length; i++)
       {
         action(arr[i]);
-      };
+      }
       return arr;
     },
     map: function(arr, action) {
@@ -37,9 +37,9 @@ var Iterators = (function() {
       // the action on each successive element
       Iterators.each(arr,
        function(i){
-          base = action(base, i)
+          base = action(base, i);
        });
-      return base
+      return base;
     }
   };
 })();
